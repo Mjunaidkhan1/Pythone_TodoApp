@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+
+    <h3>Create Todo</h3>
+    <form action="/" method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title:</label>
+    <input type="text" class="form-control" name="title" id="tit" aria-describedby="emailHelp">
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Description</label>
+    <input type="text" class="form-control" name="descr" id="desc">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+  <div class="container my-3">
+  {% if getTodo|length==0 %}
+    <h2>
+      No Records Yet
+    </h2>
+
+
+     {% else %}
+      <h3>Todo List</h3>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">Sno</th>
+                  <th scope="col">title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Date
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+        {% for i in getTodo %}
+              <tr>
+                  <th scope="row">{{loop.index}}</th>
+                  <td>{{i.title}}</td>
+                  <td >{{i.description}}</td>
+                  <td >{{i.current_date}}</td>
+                  <td ><a href="/update/{{i.sno}}"><button type="submit" class="btn btn-outline-dark">Update</button></a></td>
+                  <td ><a href="/delete/{{i.sno}}"><button type="submit" class="btn btn-outline-dark">Delete</button></a></td>
+              </tr>
+   {% endfor %}
+  {% endif %}
+         </tbody>
+      </table>
+  </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+
+    <h3>Update Todo</h3>
+    <form action="/update/{{getTodo.sno}}" method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title:</label>
+    <input type="text" class="form-control" value="{{getTodo.title}}" name="title" id="tit" aria-describedby="emailHelp">
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Description</label>
+    <input type="text" class="form-control"  value="{{getTodo.description}}" name="descr" id="desc">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+
+
+{% endblock body %}
